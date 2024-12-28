@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-kg%55-=5pb9vj8q+$d1ev-b8$(l@_@0s(bw#5s#6hdv_$guvyf'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['Felixiden1987-posters4u.herokuapp.com', 'localhost', '8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -120,18 +120,20 @@ WSGI_APPLICATION = 'posters_4_u.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
-DATABASES = {
-     'default': dj_database_url.parse('postgresql://neondb_owner:2rs4wiolMGpE@ep-winter-glitter-a28rawq0.eu-central-1.aws.neon.tech/boxer_edge_cola_34656')
- }
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net']
 
