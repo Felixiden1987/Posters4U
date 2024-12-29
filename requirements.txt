@@ -20,4 +20,4 @@ requests-oauthlib==2.0.0
 s3transfer==0.10.4
 sqlparse==0.5.2
 stripe==11.3.0
-urllib3==1.25.11
+
