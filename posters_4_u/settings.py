@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import dj_database_url 
-
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
@@ -138,7 +138,7 @@ else:
     }
 
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net']
+CSRF_TRUSTED_ORIGINS = ['https://8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net', 'https://posters4u-15875dc4f658.herokuapp.com']
 
 
 # Password validation
@@ -177,8 +177,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
