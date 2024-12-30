@@ -178,7 +178,7 @@ input[name='q']::placeholder {
 
 footer {
     background-color: white; 
-    color: black; 
+    color: black !important; 
 }
   
 footer a {
@@ -366,4 +366,10 @@ footer {
     .increment-qty, .decrement-qty {
         padding: .25rem .5rem !important;
     }
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
