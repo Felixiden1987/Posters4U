@@ -137,6 +137,6 @@ def edit_testimonials_view(request, testimonial_id):
     }
     return render(
         request,
-        'testimonials/update_testimonials.html',
+        'testimonials/edit_testimonials.html',
         context
     )

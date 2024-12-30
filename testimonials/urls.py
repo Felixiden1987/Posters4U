@@ -4,18 +4,6 @@ from .import views
 
 urlpatterns = [
     path('testimonials/', views.testimonials_view, name='testimonials'),
-    path(
-        'testimonials/add/',
-        views.add_testimonials_view, name='add_testimonials'
-    ),
-    path(
-        'testimonials/delete/<int:testimonial_id>',
-        views.delete_testimonials_view, name='delete_testimonials'
-    ),
-    path(
-        'testimonials/edit/<int:testimonial_id>',
-        views.edit_testimonials_view, name='edit_testimonials'
-    ),
+    path('testimonials/add/',views.add_testimonials_view, name='add_testimonials'),
    
-
 ]
