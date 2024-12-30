@@ -368,8 +368,14 @@ footer {
     }
 }
 
-.footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
+footer {
+    text-align:left ; 
+}
+
+.footer-links a {
+    margin-bottom: 10px;
+}
+
+footer .row {
+margin-left:0;
 }
