@@ -31,7 +31,7 @@
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ product.name }}</p>
                     {% if user.is_authenticated %}
-                                <form method="POST" action="{% url 'add_to_wishlist' product.id %}">
+                                <form class="form" action="{% url 'add_to_wishlist' product.id %}" method="POST">
                                     {% csrf_token %}
                                     <button type="submit" class="wishlist-icon" title="Add to Wishlist">
                                         <i class="fa-solid fa-heart"></i>
