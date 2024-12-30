@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container mb-2">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center my-5 "> Testimonials </h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-12 d-flex justify-content-center">
+                <a href="{% url 'add_testimonials' %}" class="btn mb-4 btn-black align-items-center">Add Your Testimonial</a>
+            </div>
+        </div>
+        <div class="row testimonial-form">
+            <div class="col-12 ">
+                {% if testimonials %}
+                    <div class="testimonial-container">
+                        {% for testimonial in testimonials %}
+                            <div class="testimonial-block p-4 mb-4 border rounded shadow-sm">
+                                <div class="testimonial-header d-flex justify-content-between">
+                                    <p><strong>{{ testimonial.user.username }}</strong></p>
+                                    <p class="text-muted">{{ testimonial.created_at|date:"F j, Y, g:i a" }}</p>
+                                </div>
+                                <div class="testimonial-body">
+                                    <p><strong>Product:</strong> {{ testimonial.product.name }}</p>
+                                    <blockquote class="blockquote">
+                                        <p>{{ testimonial.message }}</p>
+                                    </blockquote>
+                                </div>
+                                {% if testimonial.user == request.user or request.user.is_superuser %}
+                                    <a href="{% url 'edit_testimonials' testimonial.id %}" class="btn btn-dark">Edit</a>
+                                {% endif %}
+                                {% if testimonial.user == request.user or request.user.is_superuser %}
+                                    <form action="{% url 'delete_testimonials' testimonial.id %}" method="POST" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-black">Delete</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No testimonials available yet. Be the first to add one!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
