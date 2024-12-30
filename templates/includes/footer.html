@@ -1,0 +1,30 @@
+{% load static %}
+
+<footer class="bg-dark text-light py-4 w-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-4 mb-6 py-4 text-md-left">
+        <h5 class="text-uppercase mb-3"><a href="{% url 'contact' %}" class="text-light">Contact Us</a></h5>
+        <p>Email: support@posters4u.com</p>
+        <p>Phone: +123 456 7890</p>
+        <div class="mb-5">
+          <a href="https://www.facebook.com/" class="text-light mr-3" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/?lang=en" class="text-light mr-3" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/" class="text-light mr-3" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/" class="text-light" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mb-4 py-4">
+        <h5 class="text-uppercase mb-3">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'home' %}" class="text-light">Home</a></li>
+          <li><a href="{% url 'products' %}" class="text-light">Products</a></li>
+          <li><a href="{% url 'contact_us' %}" class="text-light">Contact Us</a></li>
+        </ul>
+      </div>
+      
+  <hr class="bg-light">
+  <div class="text-center">
+    <p class="mb-0">&copy; The website is for education purpose only </p>
+  </div>
+</footer>

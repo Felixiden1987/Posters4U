@@ -9,8 +9,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
-
+    <!--SEO and Accessibility-->
     {% block extra_meta %}
+        <meta name="description" content="Discover Posters 4 U - Your ultimate destination for posters, art and paintings">
+        <meta name="keywords" content="Posters, art, paintings, frames, minimalistic, interior, store">
     {% endblock %}
 
     {% block corecss %}
@@ -142,7 +144,8 @@
 $('.toast').toast('show');
 </script>
 {% endblock %}
-
+<!--footer include-->
+{% include 'includes/footer.html' %}
 
 </body>
 </html>
