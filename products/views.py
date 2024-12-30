@@ -137,3 +137,113 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+@login_required
+def wishlist_view(request):
+    """
+    Display the user's wishlist.
+
+    This view retrieves all products in the
+    logged-in user's wishlist and
+    displays them on the wishlist page.
+    Each product in the wishlist is
+    shown with its name, price,
+    and image (if available).
+
+    Arguments:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: A rendered template
+        showing the user's wishlist.
+    """
+    wishlist_items = (
+        Wishlist.objects.filter(user=request.user).
+        select_related('product'))
+    for item in wishlist_items:
+        print(
+            f"Product in wishlist: {item.product.name}, "
+            f"Price: {item.product.price}, "
+            f"Image URL:"
+            f"{item.product.image.url if item.product.image else 'No Image'}"
+        )
+        print("wishlist_view items", wishlist_items)
+    context = {
+        'wishlist_items': wishlist_items,
+    }
+    return render(request, 'products/wishlist.html', context)
+
+
+@login_required
+def add_to_wishlist_view(request, product_id):
+    """
+    Add product to wishlist
+    This view adds the specified product to the
+    logged-in user's wishlist.
+    If the product is already in the wishlist,
+    an informational message is displayed.
+
+    Arguments:
+        request (HttpRequest): The HTTP request object.
+        product_id (int): The ID of the product to
+        add to the wishlist.
+
+    Returns:
+        HttpResponse: A redirect to the wishlist page
+        after adding the product.
+    """
+    
+    product = get_object_or_404(Product, pk=product_id)
+    wishlist_item, created = (
+        Wishlist.objects.get_or_create(user=request.user, product=product)
+    )
+    print(wishlist_item)
+
+    if created:
+        messages.success(
+            request,
+            f"{product.name} has been added to your wishlist!")
+    else:
+        messages.info(request, f"{product.name} is already in your wishlist.")
+
+    # Redirect to the wishlist page
+    return redirect(reverse('wishlist'))   # Redirect to the wishlist page
+
+
+@login_required
+def remove_from_wishlist_view(request, product_id):
+    """Remove product from wishlist
+
+    This view removes the specified product
+    from the logged-in user's wishlist.
+    If the product is not found in the wishlist,
+    an informational message is shown.
+
+    Arguments:
+        request (HttpRequest): The HTTP request object.
+        product_id (int): The ID of the product to remove.
+    Returns:
+        HttpResponse: A redirect to the wishlist
+        page after the removal action.
+    """
+    
+    #  Get the product object (if it exists)
+    product = get_object_or_404(Product, pk=product_id)
+
+    #  Try to find the wishlist item for the
+    #  logged-in user and the specific product
+    wishlist_item = (
+        Wishlist.objects.filter
+        (user=request.user, product=product).first()
+    )
+    if wishlist_item:
+        wishlist_item.delete()  # Remove the item from the wishlist
+        messages.success(
+            request,
+            f"{product.name} has been removed from your wishlist.")
+    else:
+        messages.info(request, f"{product.name} is not in your wishlist.")
+
+    # Redirect to the wishlist page after removing the item
+    return redirect(reverse('wishlist'))
