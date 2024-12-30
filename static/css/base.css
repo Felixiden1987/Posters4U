@@ -178,32 +178,32 @@ input[name='q']::placeholder {
 
 footer {
     background-color: white; 
-    color: #555; 
-  }
+    color: black; 
+}
   
-  footer a {
+footer a {
     color: #ffc107; /* Accent color for links */
-  }
+}
   
-  footer a:hover {
+footer a:hover {
     color: #cc210b; /* Color on hover */
-  }
-  footer {
+}
+footer {
     position: relative; /* Ensure the footer stays relative to the page */
     bottom: 0; /* Push footer to the bottom if needed */ 
     margin-top: auto; 
     width: 105%; 
-  }
+}
 
-  footer .container{
+footer .container{
     padding:20px;
     padding-right: 0;
-  }
+}
 
-  footer .row {
+footer .row {
     margin: 20px;
     margin-left: 8rem;
-  }
+}
 
 /* -------------------------------- Media Queries */
 
@@ -296,6 +296,15 @@ footer {
     border-radius: 0;
 }
 
+/* Footer */
+
+footer {
+    position: relative; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
