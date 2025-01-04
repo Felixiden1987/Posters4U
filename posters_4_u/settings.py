@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['posters4u-15875dc4f658.herokuapp.com', 'Felixiden1987-posters4
 
 CSRF_TRUSTED_ORIGINS = [
     'posters4u-15875dc4f658.herokuapp.com',
+    'https://posters4u-15875dc4f658.herokuapp.com/contact',
     'Felixiden1987-posters4u.herokuapp.com',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
@@ -78,6 +79,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'posters_4_u.urls'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap',)
 
 TEMPLATES = [
     {
