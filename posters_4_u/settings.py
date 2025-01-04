@@ -30,6 +30,13 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['posters4u-15875dc4f658.herokuapp.com', 'Felixiden1987-posters4u.herokuapp.com', 'localhost', '8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net']
 
+CSRF_TRUSTED_ORIGINS = [
+    'posters4u-15875dc4f658.herokuapp.com',
+    'Felixiden1987-posters4u.herokuapp.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+    'https://5432-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net/',
+]
 
 # Application definition
 

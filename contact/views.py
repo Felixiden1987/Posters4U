@@ -16,7 +16,7 @@ def contact_enquiry_view(request):
     """
     # Clear the flag at the start of the
     # view to prevent unwanted flag persistence
-    request.session['IsShoppingBagUpdated'] = False
+    request.session['IsBagUpdated'] = False
 
     if request.method == 'POST':
         form = ContactEnquiryForm(request.POST)
@@ -38,7 +38,7 @@ def contact_enquiry_view(request):
 
     context = {
         'form': form,
-        'IsShoppingBagUpdated': False
+        'IsBagUpdated': False
     }
 
     return render(request,
@@ -60,7 +60,7 @@ def send_contact_confirmation_email(enquiry):
                 "get back to you as soon as possible.\n\n"
             f"Subject: {enquiry.subject}\n"
             f"Message: {enquiry.message}\n\n"
-            f"Best regards,\nPosters4u"
+            f"Best regards,\nPosters4U"
         ),
         from_email=settings.DEFAULT_FROM_EMAIL,
         recipient_list=[enquiry.email],

@@ -26,6 +26,8 @@ def testimonials_view(request):
         request, 'testimonials/testimonials.html',
         context
     )
+
+
 @login_required
 def add_testimonials_view(request):
     """
@@ -42,7 +44,7 @@ def add_testimonials_view(request):
         HttpResponse: Redirects to the testimonials page upon successful
                       submission or re-renders the add testimonial form.
     """
-    request.session['IsShoppingBagUpdated'] = False
+    request.session['IsBagUpdated'] = False
 
     if request.method == 'POST':
         form = TestimonialForm(request.POST)
@@ -81,7 +83,7 @@ def delete_testimonials_view(request, testimonial_id):
         HttpResponse: Redirects to the testimonials page upon deletion
                       or permission denial.
     """
-    request.session['IsShoppingBagUpdated'] = False
+    request.session['IsBagUpdated'] = False
 
     testimonial = get_object_or_404(Testimonial, id=testimonial_id)
 
@@ -112,7 +114,7 @@ def edit_testimonials_view(request, testimonial_id):
                       or re-renders the edit testimonial form.
     """
 
-    request.session['IsShoppingBagUpdated'] = False
+    request.session['IsBagUpdated'] = False
 
     testimonial = get_object_or_404(Testimonial, id=testimonial_id)
 
@@ -143,6 +145,6 @@ def edit_testimonials_view(request, testimonial_id):
 
 # Reset flag for success message in login page
 def reset_shopping_bag_flag(request):
-    """Reset the 'IsShoppingBagUpdated' session flag."""
-    request.session['IsShoppingBagUpdated'] = False
+    """Reset the 'IsBagUpdated' session flag."""
+    request.session['IsBagUpdated'] = False
     return HttpResponse(status=200)  # Empty response with 200 OK status
