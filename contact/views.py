@@ -28,9 +28,7 @@ def contact_enquiry_view(request):
             #send_contact_confirmation_email(enquiry)
 
             messages.success(request, 'Thank you for contacting us!'
-                             'We have received your Enquiry.'
-                             'A confirmation email has'
-                             'been sent to your mail id.')
+                             'We have received your Enquiry.')
             return redirect('contact')
         else:
             logger.error(f"Form errors: {form.errors}")  # Log form errors
