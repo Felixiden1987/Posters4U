@@ -1,8 +1,10 @@
 asgiref==3.8.1
 boto3==1.35.78
 botocore==1.35.78
-dj-database-url==0.5.0
-Django==3.2.25
+build==1.2.2.post1
+click==8.1.8
+dj-database-url==2.3.0
+Django==5.1.4
 django-allauth==0.50.0
 django-countries==7.2.1
 django-crispy-forms==1.14.0
@@ -12,11 +14,14 @@ gunicorn==23.0.0
 jmespath==1.0.1
 oauthlib==3.2.2
 pillow==11.0.0
+pip-tools==7.4.1
 psycopg2==2.9.10
 PyJWT==2.10.1
+pyproject_hooks==1.2.0
 python3-openid==3.2.0
 pytz==2024.2
 requests-oauthlib==2.0.0
 s3transfer==0.10.4
 sqlparse==0.5.2
 stripe==11.3.0
+urllib3==1.25.11
