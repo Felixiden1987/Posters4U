@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /bag/
+Dissalow: /accounts/
+Sitemap: https://posters4u-15875dc4f658.herokuapp.com/sitemap.xml
