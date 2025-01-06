@@ -148,7 +148,7 @@ else:
     }
 
 
-#CSRF_TRUSTED_ORIGINS = ['https://8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net', 'https://posters4u-15875dc4f658.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-felixiden1987-posters4u-0o1xbh09yg6.ws.codeinstitute-ide.net', 'https://posters4u-15875dc4f658.herokuapp.com']
 
 
 # Password validation
